@@ -19,11 +19,14 @@ echo -ne "
 # Permisison for the deep learning Section
 cd ../
 cd arch
+chmod +x arch-choice.sh
+
+# Deep Learning
 cd deep-learning
 chmod +x arch-deep-learning.sh
 chmod +x arch-deep-compoents.sh
 
-# Permission for the arch web development Section
+# web development 
 cd ../
 cd web-development
 chmod +x arch-web-development.sh
@@ -42,6 +45,8 @@ cd ../
 
 # Deep Learning
 cd debian
+chmod +x debian-choice.sh
+
 cd deep-learning
 chmod +x debian-deep-learning.sh
 chmod +x debian-deep-compoent.sh
