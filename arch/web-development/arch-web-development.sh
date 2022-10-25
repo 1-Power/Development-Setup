@@ -10,6 +10,7 @@ echo -ne "
  ╚══╝╚══╝ ╚══════╝╚═════╝     ╚═════╝ ╚══════╝  ╚═══╝  ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   
                                                                                                                               
 "
+
 application_pacman=(
         'curl'
         'zip'
@@ -49,6 +50,8 @@ application_paru=(
             'visual-studio-code-bin'
             'github-desktop-bin'
             'nodejs-git'
+            'webstorm'
+            'npm'
         )
 
 #The installing of application using paru
@@ -61,7 +64,6 @@ for application_paru in "${application_paru[@]}"; do
     # echo "INSTALLING: ${application_paru}"
     paru -S  "$application_paru" --noconfirm --needed
 done
-
 
 echo "
 -------------------------------------------------------------------------

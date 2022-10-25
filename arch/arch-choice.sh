@@ -128,7 +128,6 @@ function web_dev()
      ╚══╝╚══╝ ╚══════╝╚═════╝     ╚═════╝ ╚══════╝  ╚═══╝  ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   
     "
     cd web-development
-    ./arch-web-development-compoents.sh
     ./arch-web-development.sh
     cd ../
 
