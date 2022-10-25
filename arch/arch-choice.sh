@@ -170,9 +170,23 @@ function deep_dev()
                                                                                                                     
 "
 }
+function game_dev()
+{
+    clear
+    echo "Sorry, this is not available yet"
+    echo "Plase Enter Another Development Environment"
+    menu
+}
+function python_dev()
+{
+    clear
+    echo "Sorry, this is not available yet"
+    echo "Plase Enter Another Development Environment"
+    menu
+}
+
 function menu()
 {
-
     echo -ne "
     -------------------------------------------------------------------------
                 --- Which Envieonment you want to Setup ---
@@ -183,22 +197,21 @@ function menu()
             4. Python Development Environment
 
                     --- Enter your Choice ---
-    -------------------------------------------------------------------------"
+    -------------------------------------------------------------------------
+    "
 
-    read -p $user_choice
-
-
-    if [ $user_choice == 1 ]; then
-        web_dev
-    elif [ $user_choice == 2 ]; then
-        deep_dev
-    elif [ $user_choice == 3 ]; then
-        echo -ne "Game Development is not available yet"
-    elif [ $user_choice  == 4 ]; then
-        echo -ne "Sorry Python Devleopment Environment is not available yet"
-    else
-        echo -ne "Invalid Choice"
-    fi
-
+    read  user_choice
+    
+    case $user_choice in 
+        1) web_dev ;;
+        2) deep_dev ;;
+        3) game_dev ;;
+        4) python_dev ;;
+        *) 
+            clear
+            echo "Invalid Choice" 
+            menu
+            ;;
+    esac
 }
 menu
