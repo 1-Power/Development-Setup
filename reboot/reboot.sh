@@ -23,7 +23,7 @@ Enter Your Choice:
         Enter Your Choice: 
 -------------------------------------------------------------------------
 "
-read -p  ' ' user_choice
+read -p "Enter Your Choice" user_choice
 
 if [[ "$user_choice" == "yes" || "$user_choice" == "Yes" || "$user_choice" == "YES" || "$user_choice" == "yEs" || "$user_choice" == "yeS"  ]];
 then 
