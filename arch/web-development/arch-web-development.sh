@@ -25,7 +25,7 @@ for application_remove in "${application_remove[@]}"; do
 done
 
 # Installing Packages using Arch Repository
-application_pacman=([
+application_pacman=(
         'curl'
         'zip'
         'unzip'
