@@ -1,30 +1,31 @@
 #!/bin/bash
 
+clear
 echo -ne "
-
+-------------------------------------------------------------------------------------------------------------------------------
 ██╗    ██╗███████╗██████╗     ██████╗ ███████╗██╗   ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗███╗   ██╗████████╗
 ██║    ██║██╔════╝██╔══██╗    ██╔══██╗██╔════╝██║   ██║██╔════╝██║     ██╔═══██╗██╔══██╗████╗ ████║██╔════╝████╗  ██║╚══██╔══╝
 ██║ █╗ ██║█████╗  ██████╔╝    ██║  ██║█████╗  ██║   ██║█████╗  ██║     ██║   ██║██████╔╝██╔████╔██║█████╗  ██╔██╗ ██║   ██║   
 ██║███╗██║██╔══╝  ██╔══██╗    ██║  ██║██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║     ██║   ██║██╔═══╝ ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║   
 ╚███╔███╔╝███████╗██████╔╝    ██████╔╝███████╗ ╚████╔╝ ███████╗███████╗╚██████╔╝██║     ██║ ╚═╝ ██║███████╗██║ ╚████║   ██║   
  ╚══╝╚══╝ ╚══════╝╚═════╝     ╚═════╝ ╚══════╝  ╚═══╝  ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   
-                                                                                                                              
+-------------------------------------------------------------------------------------------------------------------------------                                                                                                                              
 "
 # Removing Packages for conflits
-application_remove={
+application_remove=(
     'openbsd-netcat'
-}
+)
 for application_remove in "${application_remove[@]}"; do
     echo "
 ----------------------------------------------------------------------
         Removing "${application_remove}"
 ----------------------------------------------------------------------
     "
-    sudo pacman -Rns $application_remove --noconfirm --needed
+    sudo pacman -Rns $application_remove --noconfirm 
 done
 
 # Installing Packages using Arch Repository
-application_pacman=(
+application_pacman=([
         'curl'
         'zip'
         'unzip'
@@ -40,6 +41,7 @@ application_pacman=(
         'discord'
         'npm'
         'firefox'
+        'neovim'
     )
 for application_pacman in "${application_pacman[@]}"; do
     
@@ -52,16 +54,29 @@ for application_pacman in "${application_pacman[@]}"; do
     sudo pacman -S "$application_pacman" --noconfirm --needed
 done
 
+# Installing two of the most used packages nodemon and firebase database 
+npm_packages(
+    'nodemon'
+    'firebase'
+)
+for npm_packages in "${npm_packages[@]}"; do
+    echo "
+-------------------------------------------------------------------------
+          INSTALLING: "${npm_packages}"
+-------------------------------------------------------------------------
+         " 
+    sudo npm install -g "$npm_packages" 
+done
+
+
 # Installing Application using AUR 
 application_paru=(
             'microsoft-edge-stable-bin'
-            'xampp'
             'brave-bin'
             'google-chrome'
             'visual-studio-code-bin'
             'github-desktop-bin'
-            'nodejs-git'
-            'webstorm'
+            'xampp'
         )
 
 #The installing of application using paru
@@ -74,6 +89,7 @@ for application_paru in "${application_paru[@]}"; do
     # echo "INSTALLING: ${application_paru}"
     paru -S  "$application_paru" --noconfirm --needed
 done
+
 
 
 # Enabling Virtualization
@@ -91,8 +107,3 @@ sudo virsh net-start br10
 sudo virsh net-autostart br10
 cd - 
 
-# Add sudo rights
-sudo sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-sudo sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
-
-sudo pacman -Syyu --noconfirm --needed
