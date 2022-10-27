@@ -30,7 +30,6 @@ chmod +x arch-deep-compoents.sh
 cd ../
 cd web-development
 chmod +x arch-web-development.sh
-chmod +x arch-web-development-compoents.sh
 
 cd ../
 cd ../
