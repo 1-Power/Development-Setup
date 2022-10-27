@@ -55,7 +55,7 @@ for application_pacman in "${application_pacman[@]}"; do
 done
 
 # Installing two of the most used packages nodemon and firebase database 
-npm_packages(
+npm_packages=(
     'nodemon'
     'firebase'
 )
